@@ -2,12 +2,12 @@ name:                dark-sky
 version:             0.1.0.0
 synopsis:            Initial project template from stack
 description:         Please see README.md
-homepage:            https://github.com/githubuser/dark-sky#readme
+homepage:            https://github.com/peterstuart/dark-sky
 license:             BSD3
 license-file:        LICENSE
-author:              Author name here
-maintainer:          example@example.com
-copyright:           2016 Author name here
+author:              Peter Stuart
+maintainer:          peter.l.stuart@gmail.com
+copyright:           2016 Peter Stuart
 category:            Web
 build-type:          Simple
 cabal-version:       >=1.10
@@ -75,4 +75,4 @@ test-suite dark-sky-test
 
 source-repository head
   type:     git
-  location: https://github.com/githubuser/dark-sky
+  location: https://github.com/peterstuart/dark-sky
