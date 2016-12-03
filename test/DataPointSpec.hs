@@ -6,7 +6,7 @@ module DataPointSpec
   ) where
 
 import DarkSky.Response.DataPoint
-import DarkSky.Response.Icons as Icons
+import DarkSky.Response.Icon as Icon
 import DarkSky.Response.PrecipitationType as PrecipitationType
 import Data.Aeson
 import Data.ByteString.Lazy as BL
@@ -74,7 +74,7 @@ sampleFullDataPoint =
   , cloudCover = Just 0.1
   , dewPoint = Just 6
   , humidity = Just 0.2
-  , icon = Just Icons.ClearDay
+  , icon = Just Icon.ClearDay
   , moonPhase = Just 0.3
   , nearestStormBearing = Just 7
   , nearestStormDistance = Just 8

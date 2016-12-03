@@ -1,18 +1,18 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE QuasiQuotes #-}
 
-module AlertsSpec
-  ( alertsSpec
+module AlertSpec
+  ( alertSpec
   ) where
 
-import DarkSky.Response.Alerts
+import DarkSky.Response.Alert
 import Data.Aeson
 import Data.ByteString.Lazy as BL
 import Test.Hspec
 import Text.RawString.QQ
 
-alertsSpec :: IO ()
-alertsSpec =
+alertSpec :: IO ()
+alertSpec =
   hspec $
   describe "Alert" $
   describe "FromJSON" $

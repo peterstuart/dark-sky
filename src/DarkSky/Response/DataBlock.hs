@@ -2,7 +2,7 @@
 
 module DarkSky.Response.DataBlock where
 
-import DarkSky.Response.Icons
+import DarkSky.Response.Icon
 import DarkSky.Response.DataPoint (DataPoint)
 import Data.Aeson
 import Data.Text (Text)

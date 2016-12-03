@@ -2,6 +2,7 @@
 
 module DarkSky.Response.Flags where
 
+import DarkSky.Unit
 import Data.Aeson
 import Data.Text (Text)
 
@@ -9,7 +10,7 @@ data Flags = Flags
   { darkSkyUnavailable :: Maybe Text
   , metnoLicense :: Maybe Text
   , sources :: [Text]
-  , units :: Text
+  , units :: Unit
   } deriving (Eq, Show)
 
 instance FromJSON Flags where

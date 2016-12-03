@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module DarkSky.Response.Icons where
+module DarkSky.Response.Icon where
 
 import Data.Aeson
 import Data.Map as Map

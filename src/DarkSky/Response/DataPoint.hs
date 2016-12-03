@@ -3,7 +3,7 @@
 module DarkSky.Response.DataPoint where
 
 import DarkSky.Response.PrecipitationType
-import DarkSky.Response.Icons
+import DarkSky.Response.Icon
 import DarkSky.Types
 import Data.Aeson
 import Data.Scientific (Scientific)

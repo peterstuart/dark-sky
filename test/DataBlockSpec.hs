@@ -7,7 +7,7 @@ module DataBlockSpec
 
 import DarkSky.Response.DataBlock
 import qualified DarkSky.Response.DataPoint as DP
-import DarkSky.Response.Icons as Icons
+import DarkSky.Response.Icon as Icon
 import DarkSky.Response.PrecipitationType as PrecipitationType
 import Data.Aeson
 import Data.ByteString.Lazy as BL
@@ -73,7 +73,7 @@ sampleFullDataBlock =
   DataBlock
   { data' = [sampleFullDataPoint]
   , summary = Just "summary"
-  , icon = Just Icons.Rain
+  , icon = Just Icon.Rain
   }
 
 sampleFullDataPoint :: DP.DataPoint
@@ -87,7 +87,7 @@ sampleFullDataPoint =
   , DP.cloudCover = Just 0.1
   , DP.dewPoint = Just 6
   , DP.humidity = Just 0.2
-  , DP.icon = Just Icons.ClearDay
+  , DP.icon = Just Icon.ClearDay
   , DP.moonPhase = Just 0.3
   , DP.nearestStormBearing = Just 7
   , DP.nearestStormDistance = Just 8

@@ -6,6 +6,7 @@ module FlagsSpec
   ) where
 
 import DarkSky.Response.Flags
+import DarkSky.Unit
 import Data.Aeson
 import Data.ByteString.Lazy as BL
 import Test.Hspec
@@ -38,7 +39,7 @@ sampleFlagsFull =
   { darkSkyUnavailable = Just "unavailable"
   , metnoLicense = Just "license"
   , sources = ["source1", "source2"]
-  , units = "us"
+  , units = UnitedStates
   }
 
 sampleFlagsEmptyJSON :: BL.ByteString
@@ -54,7 +55,7 @@ sampleFlagsEmpty =
   { darkSkyUnavailable = Nothing
   , metnoLicense = Nothing
   , sources = []
-  , units = "us"
+  , units = UnitedStates
   }
 
 invalidSampleFlagsJSON :: BL.ByteString

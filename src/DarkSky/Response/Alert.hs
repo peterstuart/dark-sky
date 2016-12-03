@@ -1,6 +1,6 @@
 {-# LANGUAGE DeriveGeneric #-}
 
-module DarkSky.Response.Alerts where
+module DarkSky.Response.Alert where
 
 import Data.Aeson
 import Data.Text (Text)

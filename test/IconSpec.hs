@@ -5,7 +5,7 @@ module IconSpec
   ( iconSpec
   ) where
 
-import DarkSky.Response.Icons
+import DarkSky.Response.Icon
 import Data.Aeson
 import Data.ByteString.Lazy as BL
 import Test.Hspec
