@@ -3,6 +3,8 @@
 
 module Main where
 
+import qualified DarkSky.App.Config as Config
+import DarkSky.App.Config.ArgumentParser (argumentParser)
 import DarkSky.Client
 import DarkSky.Request
 import DarkSky.Response (Response, currently)
@@ -12,26 +14,26 @@ import Data.List (intercalate)
 import Data.Maybe (fromMaybe)
 import Data.Set (empty)
 import Data.Text (unpack)
-import System.Environment (getArgs)
-import Text.Read (readMaybe)
+import Options.Applicative (execParser)
 
 main :: IO ()
 main = do
-  args <- getArgs
-  (key', coords) <- failMaybe "Invalid arguments" $ parseArgs args
-  let request = makeRequest key' coords
+  config <- execParser argumentParser
+  (key', coordinate') <- failEither $ validateConfig config
+  let request = makeRequest key' coordinate'
   forecast <- getForecast request
   putStrLn $ output forecast
 
-failMaybe :: String -> Maybe a -> IO a
-failMaybe _ (Just a) = return a
-failMaybe s Nothing = fail s
+validateConfig :: Config.Config -> Either String (String, Coordinate)
+validateConfig (Config.Config Nothing _) = Left "A key is required."
+validateConfig (Config.Config _ Nothing) =
+  Left "Latitude and longitude are required."
+validateConfig (Config.Config (Just key') (Just coordinate')) =
+  Right (key', coordinate')
 
-parseArgs :: [String] -> Maybe (String, Coordinate)
-parseArgs [key', lat, lng] = (key', ) <$> coord
-  where
-    coord = Coordinate <$> readMaybe lat <*> readMaybe lng
-parseArgs _ = Nothing
+failEither :: Either String a -> IO a
+failEither (Left s) = fail s
+failEither (Right a) = return a
 
 makeRequest :: String -> Coordinate -> Request
 makeRequest key' coord =
