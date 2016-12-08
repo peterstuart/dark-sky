@@ -15,6 +15,8 @@ cabal-version:       >=1.10
 library
   hs-source-dirs:      src
   exposed-modules:     DarkSky
+                     , DarkSky.App.Config
+                     , DarkSky.App.Config.ArgumentParser
                      , DarkSky.Client
                      , DarkSky.Request
                      , DarkSky.Request.BlockType
@@ -32,6 +34,7 @@ library
                      , bytestring
                      , containers
                      , http-conduit
+                     , optparse-applicative
                      , scientific
                      , text
                      , time
@@ -45,6 +48,7 @@ executable dark-sky-exe
   build-depends:       base
                      , containers
                      , dark-sky
+                     , optparse-applicative
                      , text
   default-language:    Haskell2010
   ghc-options:         -Wall
@@ -56,16 +60,22 @@ test-suite dark-sky-test
   build-depends:       base
                      , aeson
                      , bytestring
+                     , checkers
                      , containers
                      , dark-sky
                      , hspec
+                     , optparse-applicative
+                     , QuickCheck
                      , raw-strings-qq
+                     , scientific
                      , time
   ghc-options:         -threaded -rtsopts -with-rtsopts=-N
   default-language:    Haskell2010
   ghc-options:         -Wall
   other-modules:       AlertSpec
+                     , ArgumentParserSpec
                      , BlockTypeSpec
+                     , ConfigSpec
                      , DataBlockSpec
                      , DataPointSpec
                      , FlagsSpec
