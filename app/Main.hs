@@ -5,15 +5,12 @@ module Main where
 
 import qualified DarkSky.App.Config as Config
 import DarkSky.App.Config.ArgumentParser (argumentParser)
+import DarkSky.App.Output
 import DarkSky.Client
 import DarkSky.Request
-import DarkSky.Response (Response, currently)
-import DarkSky.Response.DataPoint (summary, temperature)
 import DarkSky.Types
 import Data.List (intercalate)
-import Data.Maybe (fromMaybe)
 import Data.Set (empty)
-import Data.Text (unpack)
 import Options.Applicative (execParser)
 
 main :: IO ()
@@ -22,7 +19,8 @@ main = do
   (key', coordinate') <- failEither $ validateConfig config
   let request = makeRequest key' coordinate'
   forecast <- getForecast request
-  putStrLn $ output forecast
+  let o = makeOutput forecast
+  putStrLn $ output o
 
 validateConfig :: Config.Config -> Either String (String, Coordinate)
 validateConfig (Config.Config Nothing _) = Left "A key is required."
@@ -47,13 +45,17 @@ makeRequest key' coord =
   , units = Nothing
   }
 
-output :: Response -> String
-output response = intercalate "\n" [temperatureString, summaryString]
-  where
-    currentDataPoint = currently response
-    temperatureString =
-      fromMaybe "No temperature available" $
-      ((++ "°") . show) <$> (currentDataPoint >>= temperature)
-    summaryString =
-      fromMaybe "No summary available" $
-      unpack <$> (currentDataPoint >>= summary)
+output :: Output -> String
+output o =
+  intercalate
+    "\n"
+    [ "Now:"
+    , currentTemperature o
+    , currentSummary o
+    , ""
+    , "Next 48 Hours:"
+    , next48HoursSummary o
+    , ""
+    , "Week:"
+    , weekSummary o
+    ]

@@ -6,6 +6,7 @@ import DataBlockSpec
 import DataPointSpec
 import FlagsSpec
 import IconSpec
+import OutputSpec
 import PrecipitationTypeSpec
 import RequestSpec
 import ResponseSpec
@@ -37,3 +38,4 @@ appSpecs :: IO ()
 appSpecs = do
   configSpec
   argumentParserSpec
+  outputSpec
