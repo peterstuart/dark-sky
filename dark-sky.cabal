@@ -17,6 +17,7 @@ library
   exposed-modules:     DarkSky
                      , DarkSky.App.Config
                      , DarkSky.App.Config.ArgumentParser
+                     , DarkSky.App.Output
                      , DarkSky.Client
                      , DarkSky.Request
                      , DarkSky.Request.BlockType
@@ -68,6 +69,7 @@ test-suite dark-sky-test
                      , QuickCheck
                      , raw-strings-qq
                      , scientific
+                     , text
                      , time
   ghc-options:         -threaded -rtsopts -with-rtsopts=-N
   default-language:    Haskell2010
@@ -80,6 +82,7 @@ test-suite dark-sky-test
                      , DataPointSpec
                      , FlagsSpec
                      , IconSpec
+                     , OutputSpec
                      , ResponseSpec
                      , RequestSpec
                      , PrecipitationTypeSpec
