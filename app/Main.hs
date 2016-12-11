@@ -4,18 +4,22 @@
 module Main where
 
 import qualified DarkSky.App.Config as Config
+import DarkSky.App.Config.File (fromFile)
 import DarkSky.App.Config.ArgumentParser (argumentParser)
 import DarkSky.App.Output
 import DarkSky.Client
 import DarkSky.Request
 import DarkSky.Types
 import Data.List (intercalate)
+import Data.Monoid ((<>))
 import Data.Set (empty)
 import Options.Applicative (execParser)
 
 main :: IO ()
 main = do
-  config <- execParser argumentParser
+  configFromFile <- fromFile
+  configFromArgs <- execParser argumentParser
+  let config = configFromFile <> configFromArgs
   (key', coordinate') <- failEither $ validateConfig config
   let request = makeRequest key' coordinate'
   forecast <- getForecast request
