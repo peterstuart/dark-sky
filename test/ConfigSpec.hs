@@ -32,12 +32,12 @@ configSpec = do
          do it "full" $
               decode sampleFullConfigJSON `shouldBe` Just sampleFullConfig
             it "empty" $
-              decode sampleEmptyConfigJSON `shouldBe` Just sampleEmptyConfig
+              decode sampleEmptyConfigJSON `shouldBe` Just (mempty :: Config)
        describe "Monoid" $
          do it "mappends full onto empty" $
-              sampleEmptyConfig <> sampleFullConfig `shouldBe` sampleFullConfig
+              mempty <> sampleFullConfig `shouldBe` sampleFullConfig
             it "mappends empty onto full" $
-              sampleFullConfig <> sampleEmptyConfig `shouldBe` sampleFullConfig
+              sampleFullConfig <> mempty `shouldBe` sampleFullConfig
             it "mappends full onto full" $
               Config (Just "key456") (Just (Coordinate 3 4)) <> sampleFullConfig `shouldBe`
               sampleFullConfig
@@ -69,10 +69,3 @@ sampleFullConfig =
 
 sampleEmptyConfigJSON :: BL.ByteString
 sampleEmptyConfigJSON = "{}"
-
-sampleEmptyConfig :: Config
-sampleEmptyConfig =
-  Config
-  { key = Nothing
-  , coordinate = Nothing
-  }

@@ -26,3 +26,11 @@ instance FromJSON DataBlock where
         , summary = summary'
         , icon = icon'
         }
+
+emptyDataBlock :: DataBlock
+emptyDataBlock =
+  DataBlock
+  { data' = []
+  , summary = Nothing
+  , icon = Nothing
+  }

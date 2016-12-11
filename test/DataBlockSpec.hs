@@ -23,7 +23,7 @@ dataBlockSpec =
        do it "full" $
             decode sampleFullDataBlockJSON `shouldBe` Just sampleFullDataBlock
           it "empty" $
-            decode sampleEmptyDataBlockJSON `shouldBe` Just sampleEmptyDataBlock
+            decode sampleEmptyDataBlockJSON `shouldBe` Just emptyDataBlock
      it "doesn't parse invalid JSON" $
        decode invalidSampleDataBlockJSON `shouldBe` (Nothing :: Maybe DataBlock)
 
@@ -118,14 +118,6 @@ sampleEmptyDataBlockJSON =
   [r|{
   "data": []
 }|]
-
-sampleEmptyDataBlock :: DataBlock
-sampleEmptyDataBlock =
-  DataBlock
-  { data' = []
-  , summary = Nothing
-  , icon = Nothing
-  }
 
 invalidSampleDataBlockJSON :: BL.ByteString
 invalidSampleDataBlockJSON = "{}"
