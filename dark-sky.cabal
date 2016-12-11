@@ -17,6 +17,7 @@ library
   exposed-modules:     DarkSky
                      , DarkSky.App.Config
                      , DarkSky.App.Config.ArgumentParser
+                     , DarkSky.App.Config.File
                      , DarkSky.App.Output
                      , DarkSky.Client
                      , DarkSky.Request
@@ -34,6 +35,8 @@ library
                      , aeson
                      , bytestring
                      , containers
+                     , directory
+                     , either
                      , http-conduit
                      , optparse-applicative
                      , scientific
