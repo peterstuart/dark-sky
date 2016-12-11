@@ -47,3 +47,40 @@ data DataPoint = DataPoint
   } deriving (Eq, Show, Generic)
 
 instance FromJSON DataPoint
+
+emptyDataPoint :: DataPoint
+emptyDataPoint =
+  DataPoint
+  { apparentTemperature = Nothing
+  , apparentTemperatureMax = Nothing
+  , apparentTemperatureMaxTime = Nothing
+  , apparentTemperatureMin = Nothing
+  , apparentTemperatureMinTime = Nothing
+  , cloudCover = Nothing
+  , dewPoint = Nothing
+  , humidity = Nothing
+  , icon = Nothing
+  , moonPhase = Nothing
+  , nearestStormBearing = Nothing
+  , nearestStormDistance = Nothing
+  , ozone = Nothing
+  , precipAccumulation = Nothing
+  , precipIntensity = Nothing
+  , precipIntensityMax = Nothing
+  , precipIntensityMaxTime = Nothing
+  , precipProbability = Nothing
+  , precipType = Nothing
+  , pressure = Nothing
+  , summary = Nothing
+  , sunriseTime = Nothing
+  , sunsetTime = Nothing
+  , temperature = Nothing
+  , temperatureMax = Nothing
+  , temperatureMaxTime = Nothing
+  , temperatureMin = Nothing
+  , temperatureMinTime = Nothing
+  , time = 0
+  , visibility = Nothing
+  , windBearing = Nothing
+  , windSpeed = Nothing
+  }

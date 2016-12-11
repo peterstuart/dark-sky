@@ -81,47 +81,8 @@ sampleFullResponse =
 
 emptyDataPoint :: POSIXTime -> DP.DataPoint
 emptyDataPoint time =
-  DP.DataPoint
-  { DP.apparentTemperature = Nothing
-  , DP.apparentTemperatureMax = Nothing
-  , DP.apparentTemperatureMaxTime = Nothing
-  , DP.apparentTemperatureMin = Nothing
-  , DP.apparentTemperatureMinTime = Nothing
-  , DP.cloudCover = Nothing
-  , DP.dewPoint = Nothing
-  , DP.humidity = Nothing
-  , DP.icon = Nothing
-  , DP.moonPhase = Nothing
-  , DP.nearestStormBearing = Nothing
-  , DP.nearestStormDistance = Nothing
-  , DP.ozone = Nothing
-  , DP.precipAccumulation = Nothing
-  , DP.precipIntensity = Nothing
-  , DP.precipIntensityMax = Nothing
-  , DP.precipIntensityMaxTime = Nothing
-  , DP.precipProbability = Nothing
-  , DP.precipType = Nothing
-  , DP.pressure = Nothing
-  , DP.summary = Nothing
-  , DP.sunriseTime = Nothing
-  , DP.sunsetTime = Nothing
-  , DP.temperature = Nothing
-  , DP.temperatureMax = Nothing
-  , DP.temperatureMaxTime = Nothing
-  , DP.temperatureMin = Nothing
-  , DP.temperatureMinTime = Nothing
-  , DP.time = time
-  , DP.visibility = Nothing
-  , DP.windBearing = Nothing
-  , DP.windSpeed = Nothing
-  }
-
-emptyDataBlock :: DataBlock
-emptyDataBlock =
-  DataBlock
-  { data' = []
-  , summary = Nothing
-  , icon = Nothing
+  DP.emptyDataPoint
+  { DP.time = time
   }
 
 sampleEmptyResponseJSON :: BL.ByteString
