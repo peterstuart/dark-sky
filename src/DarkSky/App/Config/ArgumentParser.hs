@@ -4,6 +4,7 @@ module DarkSky.App.Config.ArgumentParser
 
 import DarkSky.App.Config
 import DarkSky.Types (Coordinate(..), Degrees)
+import Data.Monoid
 import Options.Applicative
 
 argumentParser :: ParserInfo Config
